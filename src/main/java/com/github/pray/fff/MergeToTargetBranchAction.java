@@ -66,20 +66,13 @@ public class MergeToTargetBranchAction extends AnAction {
                     });
                     
                 } catch (GitOperations.GitCommandException ex) {
-                    logger.error("Merge operation failed", ex);
+                    logger.warn("Merge operation failed: " + ex.getMessage());
                     
                     ApplicationManager.getApplication().invokeLater(() -> {
-                        // 检查错误信息中是否包含冲突相关内容
-                        if (ex.getMessage().contains("CONFLICT") || 
-                            ex.getMessage().contains("Automatic merge failed")) {
-                            Messages.showWarningDialog(project,
-                                "Merge conflicts detected between 'dev' and '" + targetBranch + "'.\n" +
-                                "Please resolve conflicts manually using your Git client.\n\n" +
-                                "Error details:\n" + ex.getMessage(),
-                                "Merge Conflicts");
-                        } else {
-                            notifyError(project, ex.getMessage());
-                        }
+                        VcsNotifier.getInstance(project).notifyWarning(
+                            "合并操作失败,请手动合并,当前所在分支是: " + originalBranch,
+                            "失败原因是:"+ ex.getMessage()
+                        );
                     });
                 }
             }
