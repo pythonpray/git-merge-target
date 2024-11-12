@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.16.1'
+}
+
+group = 'com.github.pray.fff'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+intellij {
+    version = '2023.2.5'
+    type = 'IC'
+    plugins = ['Git4Idea']
+    sandboxDir = project.rootDir.canonicalPath + "/.sandbox"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+tasks {
+    buildSearchableOptions {
+        enabled = false
+    }
+    
+    patchPluginXml {
+        sinceBuild = "232"
+        untilBuild = "233.*"
+        pluginDescription = '''
+一键将当前分支合并到目标分支并推送到远程仓库。
+支持以下功能：
+- 自动切换到目标分支
+- git pull远端同名分支
+- 合并当前分支
+- 推送到远程
+- 自动切回原分支
+'''
+    }
+
+    runIde {
+        autoReloadPlugins = true
+        jvmArgs = [
+            "-Xmx2g",
+            "-XX:ReservedCodeCacheSize=512m",
+            "-Xms128m",
+            "-Djb.vmOptionsFile=${project.rootDir}/sandbox.vmoptions"
+        ]
+    }
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:deprecation'
+    options.compilerArgs << '-Xlint:unchecked'
+}

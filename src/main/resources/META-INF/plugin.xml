@@ -1,0 +1,22 @@
+<idea-plugin>
+    <id>com.github.pray.fff</id>
+    <name>Merge To Target Branch</name>
+    <vendor email="your.email@example.com" url="http://www.yourcompany.com">Your Company</vendor>
+
+    <description><![CDATA[
+        一键将当前分支合并到目标分支并推送到远程仓库。
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
+
+    <actions>
+        <action id="MergeToTarget" 
+                class="com.github.pray.fff.MergeToTargetBranchAction" 
+                text="合并到目标分支" 
+                description="将当前分支合并到目标分支">
+            <add-to-group group-id="Git.Menu" anchor="after" relative-to-action="Git.Commit.And.Push.Executor"/>
+            <add-to-group group-id="VcsGroups" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin> 
