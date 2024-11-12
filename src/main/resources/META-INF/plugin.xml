@@ -1,11 +1,11 @@
 <idea-plugin>
     <id>com.github.pray.fff</id>
     <name>Merge To Target Branch</name>
-    <vendor email="your.email@example.com" url="http://www.yourcompany.com">Your Company</vendor>
+    <vendor email="prayfff@gmail.com" url="https://github.com/pythonpray/git-merge-target">pray</vendor>
 
-    <description><![CDATA[
-        一键将当前分支合并到目标分支并推送到远程仓库。
-    ]]></description>
+    <description>
+        一键将当前分支合并到目标分支并推送到远程仓库,再切换到原分支. 无需手动来回切换分支
+    </description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>Git4Idea</depends>

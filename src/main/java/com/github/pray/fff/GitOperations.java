@@ -8,7 +8,6 @@ import git4idea.commands.GitLineHandler;
 import git4idea.repo.GitRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.List;
 
 public class GitOperations {
     private static final Logger logger = LoggerFactory.getLogger(GitOperations.class);
