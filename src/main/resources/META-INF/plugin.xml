@@ -11,12 +11,16 @@
     <depends>Git4Idea</depends>
 
     <actions>
-        <action id="MergeToTarget" 
+        <action id="MergeToTargetBranch" 
                 class="com.github.pray.fff.MergeToTargetBranchAction" 
-                text="合并到目标分支" 
-                description="将当前分支合并到目标分支">
+                text="Merge to Target Branch" 
+                description="Merge current branch to target branch">
             <add-to-group group-id="Git.Menu" anchor="after" relative-to-action="Git.Commit.And.Push.Executor"/>
             <add-to-group group-id="VcsGroups" anchor="last"/>
+            <!-- Windows/Linux 快捷键 -->
+            <keyboard-shortcut first-keystroke="control alt M" keymap="$default"/>
+            <!-- macOS 快捷键 - 使用不太常用的组合避免冲突 -->
+            <keyboard-shortcut first-keystroke="shift meta alt M" keymap="Mac OS X 10.5+"/>
         </action>
     </actions>
 </idea-plugin> 
