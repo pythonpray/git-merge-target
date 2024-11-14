@@ -11,4 +11,4 @@
 release 版本
 
 - 0.0.1  https://github.com/pythonpray/git-merge-target/releases/tag/verion-0.0.1
-- 0.0.2  https://github.com/pythonpray/git-merge-target/releases/tag/verion-0.0.2 
+- 0.0.2  https://github.com/pythonpray/git-merge-target/releases/tag/version-0.0.2
