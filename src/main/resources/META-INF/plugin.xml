@@ -4,16 +4,17 @@
     <vendor email="prayfff@gmail.com" url="https://github.com/pythonpray/git-merge-target">pray</vendor>
 
     <description><![CDATA[
-        A Git branch merging plugin that helps you merge the current branch to a target branch with one click.
+        A Git branch merging plugin that simplifies your Git workflow by providing one-click branch merging capabilities.
         
-        Features:
-        - One-click merge operation
-        - Automatic branch switching
-        - Push changes to remote repository
-        - Return to original branch after merge
+        Key Features:
+        - One-click merge operation from current branch to target branch
+        - Automatic branch switching before and after merge
+        - Automatic push to remote repository after successful merge
+        - Smart conflict detection and notification
+        - Convenient branch selection dialog
+        - Supports both local and remote branch operations
         
-        简体中文说明:
-        一键将当前分支合并到目标分支并推送到远程仓库,再切换到原分支. 无需手动来回切换分支
+        This plugin helps developers save time by automating the common Git merge workflow steps.
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
@@ -23,7 +24,7 @@
         <action id="MergeToTargetBranch" 
                 class="com.github.pray.fff.MergeToTargetBranchAction" 
                 text="Merge to Target Branch" 
-                description="Merge current branch to target branch">
+                description="Merge current branch to target branch and push to remote without switching branches">
             <add-to-group group-id="Git.Menu" anchor="after" relative-to-action="Git.Commit.And.Push.Executor"/>
             <add-to-group group-id="VcsGroups" anchor="last"/>
             <!-- Windows/Linux 快捷键 -->

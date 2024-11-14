@@ -38,13 +38,17 @@ tasks {
         sinceBuild = "232"
         untilBuild = "233.*"
         pluginDescription = '''
-一键将当前分支合并到目标分支并推送到远程仓库。
-支持以下功能：
-- 自动切换到目标分支
-- git pull远端同名分支
-- 合并当前分支
-- 推送到远程
-- 自动切回原分支
+A Git branch merging plugin that simplifies your Git workflow by providing one-click branch merging capabilities.
+     
+Key Features:
+- One-click merge operation from current branch to target branch
+- Automatic branch switching before and after merge
+- Automatic push to remote repository after successful merge
+- Smart conflict detection and notification
+- Convenient branch selection dialog
+- Supports both local and remote branch operations
+
+This plugin helps developers save time by automating the common Git merge workflow steps.
 '''
     }
 

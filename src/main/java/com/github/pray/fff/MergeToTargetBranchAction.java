@@ -68,8 +68,8 @@ public class MergeToTargetBranchAction extends AnAction {
                     
                     ApplicationManager.getApplication().invokeLater(() -> {
                         VcsNotifier.getInstance(project).notifyWarning(
-                            "合并操作失败,请手动合并,当前所在分支是: " + targetBranch,
-                            "失败原因是:"+ ex.getMessage()
+                            "Merge failed. Please resolve conflicts manually. Current branch: " + targetBranch,
+                            "Failure reason: " + ex.getMessage()
                         );
                     });
                 }
@@ -83,31 +83,30 @@ public class MergeToTargetBranchAction extends AnAction {
 
         public BranchSelectionDialog(Project project) {
             super(project);
-            setTitle("选择目标分支");
+            setTitle("Select Target Branch");
             
             List<String> branches;
             GitRepository repository = GitUtil.getRepositoryManager(project).getRepositories().get(0);
             try {
-                // 直接使用 Git4Idea API 获取分支列表
                 branches = repository.getBranches().getLocalBranches().stream()
                         .map(branch -> branch.getName())
                         .collect(Collectors.toList());
             } catch (Exception e) {
-                logger.error("获取分支列表失败", e);
-                branches = List.of(); // 如果获取失败，使用空列表
+                logger.error("Failed to get branch list", e);
+                branches = List.of();
                 Messages.showErrorDialog(project, 
-                    "获取分支列表失败: " + e.getMessage(), 
-                    "错误");
+                    "Failed to get branch list: " + e.getMessage(), 
+                    "Error");
             }
             
             branchComboBox = new ComboBox<>(branches.toArray(new String[0]));
-            init(); // 初始化对话框
+            init();
         }
 
         @Override
         protected JComponent createCenterPanel() {
             JPanel panel = new JPanel(new BorderLayout());
-            panel.add(new JLabel("选择要合并到的目标分支:"), BorderLayout.NORTH);
+            panel.add(new JLabel("Select target branch to merge into:"), BorderLayout.NORTH);
             panel.add(branchComboBox, BorderLayout.CENTER);
             return panel;
         }
@@ -119,8 +118,8 @@ public class MergeToTargetBranchAction extends AnAction {
 
     private void notifyError(Project project, String message) {
         VcsNotifier.getInstance(project).notifyError(
-            "合并失败",
-            "无法完成分支合并操作: " + message
+            "Merge failed",
+            "Unable to complete branch merging operation: " + message
         );
     }
 
