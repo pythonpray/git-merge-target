@@ -3,9 +3,18 @@
     <name>Merge To Target Branch</name>
     <vendor email="prayfff@gmail.com" url="https://github.com/pythonpray/git-merge-target">pray</vendor>
 
-    <description>
+    <description><![CDATA[
+        A Git branch merging plugin that helps you merge the current branch to a target branch with one click.
+        
+        Features:
+        - One-click merge operation
+        - Automatic branch switching
+        - Push changes to remote repository
+        - Return to original branch after merge
+        
+        简体中文说明:
         一键将当前分支合并到目标分支并推送到远程仓库,再切换到原分支. 无需手动来回切换分支
-    </description>
+    ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>Git4Idea</depends>
@@ -19,7 +28,7 @@
             <add-to-group group-id="VcsGroups" anchor="last"/>
             <!-- Windows/Linux 快捷键 -->
             <keyboard-shortcut first-keystroke="control alt M" keymap="$default"/>
-            <!-- macOS 快捷键 - 使用不太常用的组合避免冲突 -->
+            <!-- macOS 快捷键 -->
             <keyboard-shortcut first-keystroke="shift meta alt M" keymap="Mac OS X 10.5+"/>
         </action>
     </actions>
