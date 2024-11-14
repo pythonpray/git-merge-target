@@ -55,14 +55,12 @@ public class MergeToTargetBranchAction extends AnAction {
                     indicator.setIndeterminate(false);
                     indicator.setText("Starting merge process...");
                     
-                    // 使用GitOperations执行合并操作
-                    GitOperations.mergeBranch("dev", targetBranch);
+                    GitOperations.mergeBranch(originalBranch, targetBranch);
                     
-                    // 显示成功消息
                     ApplicationManager.getApplication().invokeLater(() -> {
                         notifySuccess(project, 
                             "Merge Successful", 
-                            String.format("Successfully merged dev to %s!", targetBranch));
+                            String.format("Successfully merged %s to %s!", originalBranch, targetBranch));
                     });
                     
                 } catch (GitOperations.GitCommandException ex) {
@@ -70,7 +68,7 @@ public class MergeToTargetBranchAction extends AnAction {
                     
                     ApplicationManager.getApplication().invokeLater(() -> {
                         VcsNotifier.getInstance(project).notifyWarning(
-                            "合并操作失败,请手动合并,当前所在分支是: " + originalBranch,
+                            "合并操作失败,请手动合并,当前所在分支是: " + targetBranch,
                             "失败原因是:"+ ex.getMessage()
                         );
                     });
