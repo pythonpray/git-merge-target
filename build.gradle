@@ -38,18 +38,19 @@ tasks {
         sinceBuild = "232"
         untilBuild = "233.*"
         pluginDescription = '''
-A Git branch merging plugin that simplifies your Git workflow by providing one-click branch merging capabilities.
-     
-Key Features:
-- One-click merge operation from current branch to target branch
-- Automatic branch switching before and after merge
-- Automatic push to remote repository after successful merge
-- Smart conflict detection and notification
-- Convenient branch selection dialog
-- Supports both local and remote branch operations
-
-This plugin helps developers save time by automating the common Git merge workflow steps.
-'''
+        <p>A Git branch merging plugin that simplifies your Git workflow by providing one-click branch merging capabilities.</p>
+        <br>
+        <p><b>Key Features:</b></p>
+        <ul>
+            <li>One-click merge operation from current branch to target branch</li>
+            <li>Automatic branch switching before and after merge</li>
+            <li>Automatic push to remote repository after successful merge</li>
+             <li>Smart conflict detection and notification</li>
+            <li>Convenient branch selection dialog</li>
+             <li>Supports both local and remote branch operations</li>
+        </ul>
+        <p>This plugin helps developers save time by automating the common Git merge workflow steps.</p>
+        '''
     }
 
     runIde {
