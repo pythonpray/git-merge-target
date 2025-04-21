@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.github.pray.fff'
-version = '0.0.4'
+version = '0.0.5'
 
 repositories {
     mavenCentral()
@@ -36,7 +36,7 @@ tasks {
     
     patchPluginXml {
         sinceBuild = "232"
-        untilBuild = "243.*"
+        untilBuild = "433.*"
         pluginDescription = '''
         <p>A Git branch merging plugin that simplifies your Git workflow by providing one-click branch merging capabilities.</p>
         <br>

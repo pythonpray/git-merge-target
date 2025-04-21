@@ -13,3 +13,9 @@ release 版本
 - 0.0.1  https://github.com/pythonpray/git-merge-target/releases/tag/verion-0.0.1
 - 0.0.2  https://github.com/pythonpray/git-merge-target/releases/tag/version-0.0.2
 - 0.0.4  https://github.com/pythonpray/git-merge-target/releases/tag/version-0.0.4
+- 0.0.5  https://github.com/pythonpray/git-merge-target/releases/tag/version-0.0.5
+
+
+## 版本
+其实后面2个版本和之前的版本没有任何区别,只是IDEA升级了版本,插件要对应改下版本.
+直接手动下载后,从磁盘安装.就不用管版本的问题了
