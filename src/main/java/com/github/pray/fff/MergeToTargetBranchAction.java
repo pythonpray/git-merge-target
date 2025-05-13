@@ -3,7 +3,6 @@ package com.github.pray.fff;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vcs.VcsNotifier;
 import git4idea.GitUtil;
 import git4idea.repo.GitRepository;
 import org.slf4j.Logger;
@@ -16,6 +15,8 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.DialogWrapper;
+import com.intellij.notification.NotificationGroupManager;
+import com.intellij.notification.NotificationType;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 
 public class MergeToTargetBranchAction extends AnAction {
     private static final Logger logger = LoggerFactory.getLogger(MergeToTargetBranchAction.class);
+    public static final String NOTIFICATION_GROUP_ID = "MergeToTargetBranch.Notifications";
 
     @Override
     public void actionPerformed(AnActionEvent e) {
@@ -67,7 +69,7 @@ public class MergeToTargetBranchAction extends AnAction {
                     logger.warn("Merge operation failed: " + ex.getMessage());
                     
                     ApplicationManager.getApplication().invokeLater(() -> {
-                        VcsNotifier.getInstance(project).notifyWarning(
+                        notifyWarning(project,
                             "Merge failed. Please resolve conflicts manually. Current branch: " + targetBranch,
                             "Failure reason: " + ex.getMessage()
                         );
@@ -116,17 +118,24 @@ public class MergeToTargetBranchAction extends AnAction {
         }
     }
 
-    private void notifyError(Project project, String message) {
-        VcsNotifier.getInstance(project).notifyError(
-            "Merge failed",
-            "Unable to complete branch merging operation: " + message
-        );
+    private void notifyError(Project project, String title, String message) {
+        NotificationGroupManager.getInstance()
+                .getNotificationGroup(NOTIFICATION_GROUP_ID)
+                .createNotification(title, message, NotificationType.ERROR)
+                .notify(project);
     }
 
     private void notifySuccess(Project project, String title, String message) {
-        VcsNotifier.getInstance(project).notifySuccess(
-            title,
-            message
-        );
+        NotificationGroupManager.getInstance()
+                .getNotificationGroup(NOTIFICATION_GROUP_ID)
+                .createNotification(title, message, NotificationType.INFORMATION)
+                .notify(project);
+    }
+
+    private void notifyWarning(Project project, String title, String message) {
+        NotificationGroupManager.getInstance()
+                .getNotificationGroup(NOTIFICATION_GROUP_ID)
+                .createNotification(title, message, NotificationType.WARNING)
+                .notify(project);
     }
 }

@@ -20,6 +20,18 @@
     <depends>com.intellij.modules.platform</depends>
     <depends>Git4Idea</depends>
 
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- 在这里添加 Notification Group -->
+        <notificationGroup id="MergeToTargetBranch.Notifications" displayType="BALLOON" />
+        <!--
+            displayType 可以是:
+            - BALLOON: 标准的右下角气泡通知
+            - STICKY_BALLOON: 粘性气泡，需要手动关闭
+            - TOOL_WINDOW: 在指定的 Tool Window 中显示 (需要 toolWindowId 属性)
+            - NONE: 不显示，只记录日志
+        -->
+    </extensions>
+    
     <actions>
         <action id="MergeToTargetBranch" 
                 class="com.github.pray.fff.MergeToTargetBranchAction" 

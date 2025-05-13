@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.github.pray.fff'
-version = '0.0.5'
+version = '0.0.6'
 
 repositories {
     mavenCentral()
@@ -26,8 +26,6 @@ test {
     useJUnitPlatform()
 }
 
-sourceCompatibility = 17
-targetCompatibility = 17
 
 tasks {
     buildSearchableOptions {
